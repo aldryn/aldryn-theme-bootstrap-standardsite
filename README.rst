@@ -2,7 +2,11 @@
 Standardsite Bootstrap Theme
 ============================
 
-Currently supports the following add-ons:
+More information can be found: http://docs.aldryn.com/en/latest/reference/themes/first-steps.html
+
+
+Currently supports the following add-ons
+----------------------------------------
 
 * Aldryn Accordion
 * Aldryn Forms
@@ -13,10 +17,12 @@ Currently supports the following add-ons:
 * Aldryn Menu
 * Aldryn Style
 
-Currently supports the following apps:
+
+Currently supports the following apps
+-------------------------------------
 
 * Aldryn Blog
-* Aldryn Team
-* Aldryn Jobs
 * Aldryn Events
 * Aldryn FAQ
+* Aldryn Jobs
+* Aldryn Team
