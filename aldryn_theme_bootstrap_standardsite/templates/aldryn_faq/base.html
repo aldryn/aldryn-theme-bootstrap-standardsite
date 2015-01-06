@@ -1,15 +1,23 @@
 {% extends "base.html" %}
-{% load cms_tags %}
+{% load i18n cms_tags menu_tags %}
 
 {% block content %}
-<div class="row">
-    <div class="medium-17 push-7 column">
-        <div class="app app-faq">
-            {% block content_faq %}{% endblock %}
+<div class="container">
+    <div class="row">
+        <div class="col-md-17 col-md-push-7">
+            <div class="aldryn aldryn-faq">
+                <h1>{% trans "FAQ" %}</h1>
+                {% block faq_content %}{% endblock %}
+            </div>
         </div>
-    </div>
-    <div class="medium-7 pull-17 column">
-        {% with 260 as width %}{% static_placeholder "sidebar_faq" %}{% endwith %}
+        <div class="col-md-7 col-md-pull-17">
+            {% block subnav %}
+                {% page_attribute menu_title request.current_page.get_root as subtitle %}
+                <ul class="nav navbar-sidenav">
+                    {% show_menu 1 5 0 1 "includes/menu/navigation.html" %}
+                </ul>
+            {% endblock subnav %}
+        </div>
     </div>
 </div>
 {% endblock content %}
