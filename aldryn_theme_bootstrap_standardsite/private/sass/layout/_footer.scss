@@ -1,0 +1,39 @@
+// @media all {
+//######################################################################################################################
+// #MOBILE#
+
+.footer { color:$color-grey; font-size:12px; line-height:lh(12px);
+    padding:25px 0; background-color:$footer-background;
+
+    a { color:black; }
+    a:focus, a:active, a:focus { text-decoration:underline; }
+
+    .copyright { float:left; margin:0; min-width:300px; }
+    .copyright p { margin:0; }
+
+    .footnav { float:right; font-size:12px; line-height:12px;
+        ul { list-style-type:none; padding:2px 0 0; margin:0; }
+        li { @include inline-block(); padding:0 0 0 10px; margin:0 0 0 10px; border-left:1px solid $color-grey; }
+        li:first-child { border:none; padding-left:0; margin-left:0; position:relative; margin-top:-6px;
+            a { @extend .icon; @extend .icon-arrow-top; }
+            a:before { padding-right:$icon-space; top:3px; }
+        }
+    }
+}
+
+// end of mobile
+// }
+
+@media (min-width: $responsive-tablet) {
+//######################################################################################################################
+// #TABLET#
+
+// end of tablet
+}
+
+@media (min-width: $responsive-desktop) {
+//######################################################################################################################
+// #DESKTOP#
+
+// end of desktop
+}

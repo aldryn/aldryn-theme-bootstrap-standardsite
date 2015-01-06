@@ -1,0 +1,86 @@
+// @media all {
+//######################################################################################################################
+// #MOBILE#
+
+// APPLICATION
+.app-events {
+
+    // list
+    .event-items {
+        li { padding-left:200px; min-height:300px; }
+        .events-visual { position:absolute; left:0; top:10px; }
+    }
+
+    // detail
+    .events-detail {
+        .events-date { float:none; }
+        .events-venue { margin:$line-space 0 $line-space $line-space; }
+        .events-lead { @extend .lead; padding-top:$line-space / 2; }
+    }
+
+    // list & detail
+    .events-date, .events-venue { float:left; padding:5px 8px; @include border-radius(3px);
+        background:lighten($color-grey-light, 10%); @include box-shadow(inset 0 1px 2px $color-grey-light); }
+    .events-venue { float:right; margin:$line-space 0; text-align:right; }
+
+    // registration
+    .event-registration {
+        margin-top:$line-space * 2; border-top:1px solid $color-border;
+
+        .form-events fieldset {
+            li { float:left; width:50%; }
+            li:nth-child(5) { width:100%; textarea { width:80%; } }
+            li:last-child { width:100%; textarea { width:80%; height:50px; } }
+        }
+    }
+
+}
+
+// PLUGINS
+.plugin-events {
+
+    // plugin upcoming
+    .events-upcoming { list-style-type:none; padding-left:0; margin-left:0; border-top:1px dotted $color-grey-light;
+        li { border-bottom:1px dotted $color-grey-light; }
+        span { float:right; color:$color-grey-light; font-size:12px; }
+    }
+
+    // plugin calendar
+    .events-calendar { margin-bottom:$line-space * 3; padding-top:3px;
+        > h3 { text-align:center; margin-bottom:-7px; }
+
+        .table-calendar {
+            td, th { text-align:center; }
+
+            th { padding-top:3px; padding-bottom:2px; }
+            td.weekend { background:lighten($color-grey-light, 18%); }
+            .disabled { @include opacity(0.2); }
+            .events { background:rgba($color-primary, 0.05) !important; }
+        }
+
+        .controls { height:0; margin:0; position:relative; top:-18px;
+            a { color:$font-color; width:18px; height:18px; overflow:hidden; @extend .icon; }
+            a:hover:before { color:$color-primary !important; }
+            .back { float:left; @extend .icon-arrow-left; }
+            .next { float:right; @extend .icon-arrow-right; }
+        }
+    }
+
+}
+
+// end of mobile
+// }
+
+@media (min-width: $responsive-tablet) {
+//######################################################################################################################
+// #TABLET#
+
+// end of tablet
+}
+
+@media (min-width: $responsive-desktop) {
+//######################################################################################################################
+// #DESKTOP#
+
+// end of desktop
+}

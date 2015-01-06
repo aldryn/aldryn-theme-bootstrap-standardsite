@@ -1,0 +1,23 @@
+//######################################################################################################################
+// #AUTOIMPORTS#
+
+// this folder is for reusable plugins / apps from a cms or alike
+// update this file accordingly to include new plugins globally
+
+// importing applications
+@import "core";
+@import "shop";
+@import "blog";
+@import "events";
+@import "news";
+@import "faq";
+@import "jobs";
+@import "people";
+
+// importing addons
+@import "gallery";
+@import "locations";
+@import "carousel";
+@import "mobilemenu";
+@import "accordion";
+@import "uniform";

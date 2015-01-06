@@ -1,0 +1,107 @@
+// @media all {
+//######################################################################################################################
+// #MOBILE#
+
+// #DJANGO-CMS/filer#
+.file { display:block; margin-top:$line-space; margin-bottom:$line-space;
+    img { display:none; }
+    a { @extend .icon; @extend .icon-download;
+        &:before { color:$font-color; top:3px; }
+    }
+    .filesize { color:$color-grey-light; }
+}
+.plugin-filer {
+    ul { @extend .list-reset; }
+    ul li { margin-top:$line-space; margin-bottom:$line-space; }
+    .file a:before { margin-right:$icon-space; }
+}
+.plugin-filer-image {
+    .info { font-style:italic; display:block; }
+    // alignment
+    &.right { @extend .image-right; }
+    &.left { @extend .image-left; }
+}
+
+// #DJANGO-CMS/video#
+.plugin-video, .plugin-flash {
+    iframe, object { max-width:100%; @include box-shadow(0 3px 3px -3px $color-grey); }
+}
+
+// #DJANGO-CMS/social#
+.twitter-timeline { width:100%; }
+
+// #COMMON#
+//###########################################################
+.app, .plugin {
+
+    // list reset and handling
+    [class*="-items"], [class$="-tags"], [class$="-authors"], [class$="-archive"], [class$="-categories"] {
+        list-style-type:none; padding-left:0; margin-left:0; margin-bottom:$line-space * 3;
+        > li, [class*="-empty"] { display:block; position:relative; margin-bottom:-1px; @include clearfix();
+            border:1px dotted $color-grey-light; border-left:none; border-right:none; }
+    }
+
+    // meta informations
+    [class$="-meta"] { padding:0; }
+    [class$="-date"] { @extend .icon; @extend .icon-arrow-right; }
+    [class$="-author"]:before { content:" - "; }
+    [class$="-date"]:before { padding-right:$icon-space; }
+
+    // back button
+    [class$="-back"] { position:absolute; left:-28px; top:14px; @include transform(rotate(-90deg));
+        a { color:white; text-decoration:none; font-size:12px; text-transform:uppercase;
+            padding:2px 5px; background:$color-grey-light;
+            @include text-shadow(-1px 1px 0 rgba(0,0,0, 0.1));
+            @include border-radius(3px);
+            @include transition(background, 300ms);
+            &:hover { background:$color-grey; }
+        }
+    }
+
+    // more button
+    [class$="-more"] { text-transform:uppercase; padding:0 0 $line-space / 2; }
+    [class$="-more"]:before { content:"- "; }
+
+    // empty view
+    [class$="-empty"] {
+        p { @extend .icon; @extend .icon-info; }
+        p:before { padding-right:$icon-space; }
+    }
+
+}
+
+// ie fixes
+.ie8 .addon [class$="-back"] { left:-40px; }
+
+.plugin {
+
+    // plugin tags
+    [class$="-tags"] {
+        li { display:inline; border:none; }
+        a { color:$color-grey-light; white-space:nowrap; text-decoration:none; padding:3px 6px; margin:0 2px 5px 0;
+            background:$color-grey-dark; @include inline-block(); @include border-radius(2px);
+            @include transition(all, 300ms); }
+        a span { color:$color-grey; }
+        a:hover { color:$color-grey; background:$color-grey-light; }
+        // tags
+        .blog-tag-1 {} // the number indicates tag.count
+    }
+
+}
+
+// end of mobile
+// }
+
+@media (min-width: $responsive-tablet) {
+//######################################################################################################################
+// #TABLET#
+
+// end of tablet
+}
+
+@media (min-width: $responsive-desktop) {
+//######################################################################################################################
+// #DESKTOP#
+
+// end of desktop
+}

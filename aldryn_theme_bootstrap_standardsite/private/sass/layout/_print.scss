@@ -1,0 +1,23 @@
+@media print {
+//######################################################################################################################
+// #PRINT#
+
+// some elements that should be hidden by default
+.toolbar, .mainnav, .subnav, .footer { display:none; }
+
+// set the correct logo
+.logo-main a { text-indent:0; }
+
+// overwrite header css
+.header { padding:0; }
+.header-foxed { position:relative; }
+.header-space { display:none !important; }
+
+// hide addons
+.plugin-gallery { display:none; }
+
+// cms
+#cms_toolbar { display:none; }
+
+// end of print
+}

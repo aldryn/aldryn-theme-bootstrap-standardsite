@@ -1,0 +1,44 @@
+// @media all {
+//######################################################################################################################
+// #MOBILE#
+
+// PLUGINS
+.plugin-people {
+
+    // general styles
+    .people-lead { @extend .lead; }
+    .people-desc { color:$color-grey-light; }
+    .people-desc span { color:$color-grey; }
+
+    .people-group { padding:0 10px; margin:0 0 $line-space*2;
+        border-left:5px solid $color-grey-dark;
+    }
+
+    .people-items { @include clearfix();
+        li { float:left; width:33%; min-height:290px; }
+        h2 { font-size:120%; line-height:120%; }
+        h2 span { display:block; font-size:80%; }
+
+        .btn-download { @extend .icon; @extend .icon-download;
+            &:before { padding-right:$icon-space; color:$font-color; }
+        }
+    }
+
+}
+
+// end of mobile
+// }
+
+@media (min-width: $responsive-tablet) {
+//######################################################################################################################
+// #TABLET#
+
+// end of tablet
+}
+
+@media (min-width: $responsive-desktop) {
+//######################################################################################################################
+// #DESKTOP#
+
+// end of desktop
+}

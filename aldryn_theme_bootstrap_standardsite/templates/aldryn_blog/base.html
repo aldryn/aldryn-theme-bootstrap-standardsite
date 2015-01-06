@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+{% load cms_tags %}
+
+{% block content %}
+<div class="row">
+    <div class="medium-17 column">
+        <div class="app app-blog">
+            {% block content_blog %}{% endblock %}
+        </div>
+    </div>
+    <div class="medium-7 column">
+        {% with 260 as width %}{% static_placeholder "sidebar_blog" %}{% endwith %}
+    </div>
+</div>
+{% endblock content %}

@@ -1,0 +1,3 @@
+recursive-include aldryn_theme_bootstrap_standardsite/static *
+recursive-include aldryn_theme_bootstrap_standardsite/private *
+recursive-include aldryn_theme_bootstrap_standardsite/templates *.html

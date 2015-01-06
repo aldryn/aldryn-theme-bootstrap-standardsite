@@ -1,0 +1,6 @@
+.*
+!.gitignore
+*.pyc
+/env/
+/*.egg-info/
+*.css

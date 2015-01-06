@@ -1,0 +1,66 @@
+// @media all {
+//######################################################################################################################
+// #MOBILE#
+
+// required boilerplate style
+.uniform { cursor:pointer; }
+.uniform-checkbox, .uniform-radio,
+.uniform-file, .uniform-select { position:relative; @include inline-block(); cursor:pointer; }
+.uniform input,
+.uniform select { position:absolute; z-index:100; }
+.uniform-radio > span, .uniform-checkbox > span { position:relative; }
+
+//###########################################################
+// common styles
+.uniform-radio, .uniform-checkbox { line-height:0; width:14px; height:14px;
+    @include border-radius($input-radius); border:1px solid $input-border; background:$input-background; }
+.uniform-select, .uniform-file { border:1px solid $input-border; background:$input-background; @include border-radius($input-radius); }
+
+// theme for checkbox
+.uniform-checkbox .uniform-checkbox-knob { @extend .icon; @extend .icon-checked;
+    &:before { color:$color-primary; font-size:14px !important; top:0 !important; left:0 !important; }
+}
+
+// theme for radio
+.uniform-radio { @include border-radius(100%); overflow:hidden; }
+.uniform-radio span { @include border-radius(100%); }
+.uniform-radio .uniform-radio-knob { display:block; width:6px; height:6px; margin:4px 0 0 4px; background:$color-primary; }
+
+// theme for file
+.uniform-file { clear:both; overflow:hidden; }
+.uniform-file-status { float:left; color:$input-font-color; font-size:12px; line-height:12px; padding:3px 0 0 0;
+    max-width:70%; white-space:nowrap; overflow:hidden; }
+.uniform-file-btn { float:right; color:$input-font-color; font-size:12px; line-height:12px; cursor:pointer;
+    padding:3px 5px 4px; margin:0 -4px 0 0; background:$input-border; @include border-radius($input-radius);
+}
+.uniform-file:hover .uniform-file-btn { color:white; background:#666; }
+
+// custom select
+.uniform-select { padding:2px 1px 4px !important; @include micro-clearfix; }
+.uniform-select-status { float:left; font-size:12px; line-height:12px; padding:5px 0 0 6px; }
+.uniform-select-arrow { float:right; width:15px; height:15px; margin:1px 5px 0 0;
+    @extend .icon; @extend .icon-arrow-bottom; }
+
+// states
+.uniform-disabled, .uniform-disabled select { opacity:0.5; cursor:not-allowed; }
+.uniform-focus { outline:-webkit-focus-ring-color auto 5px; }
+
+.uniform-radio:hover, .uniform-checkbox:hover,
+.uniform-file:hover, .uniform-select:hover { @include box-shadow(0 0 3px #e5e5e5); @include transition(border, 200ms); }
+
+// end of mobile
+// }
+
+@media (min-width: $responsive-tablet) {
+//######################################################################################################################
+// #TABLET#
+
+// end of tablet
+}
+
+@media (min-width: $responsive-desktop) {
+//######################################################################################################################
+// #DESKTOP#
+
+// end of desktop
+}

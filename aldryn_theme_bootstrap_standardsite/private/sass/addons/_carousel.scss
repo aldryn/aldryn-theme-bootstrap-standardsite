@@ -1,0 +1,73 @@
+// @media all {
+//######################################################################################################################
+// #MOBILE#
+
+.plugin-carousel {
+    .wrapper { position:relative; z-index:1; overflow:hidden; }
+    .viewport { position:absolute; left:0; top:0; width:100%; @extend .list-reset;
+        .item { float:left; }
+        .item img { max-width:100%; margin:0 auto; }
+        .item.active { display:block; }
+    }
+
+    // custom styles
+    .trigger-next, .trigger-previous { position:absolute; top:50%; z-index:101; margin:-16px 0 0; }
+    .trigger-next { right:25px; }
+    .trigger-previous { left:25px; }
+    .trigger-next a, .trigger-previous a { display:block; width:32px; height:26px; line-height:1; overflow:hidden; @extend .icon;
+        &:before { font-size:24px !important; color:$color-grey; @include transition(color, 300ms); }
+        &:hover:before { color:$color-grey-dark !important; }
+    }
+    .trigger-next a { @extend .icon-arrow-right; color:white; }
+    .trigger-previous a { @extend .icon-arrow-left; color:white; }
+
+    nav { text-align:center; margin:$line-space 0 0 0;
+        a { padding:0; width:12px; height:12px; margin:0 2.5px; background:$color-grey-light;
+            @include inline-block(); @include hide-text(); @include border-radius(100%);
+            @include transition(background, 300ms);
+            &.active, &:hover, &:focus { background:$color-primary; }
+        }
+    }
+
+    // content
+    .viewport .item { margin:0 10px; background:white; }
+
+    // nice animation
+    .wrapper {
+        .trigger-next, .trigger-previous { visibility:hidden; @include transition(all, 300ms); }
+        .trigger-next { right:-50px; }
+        .trigger-previous { left:-50px; }
+        &:hover {
+            .trigger-next, .trigger-previous { visibility:visible; }
+            .trigger-next { right:0; }
+            .trigger-previous { left:0; }
+        }
+    }
+}
+.noscript .plugin-carousel {
+    .item { display:block; }
+    .viewport, .item { position:relative; }
+    .wrapper { min-height:100px; } // only for nojs
+    nav, .trigger-next, .trigger-previous { display:none; }
+}
+
+// end of mobile
+// }
+
+@media (min-width: $responsive-tablet) {
+//######################################################################################################################
+// #TABLET#
+
+.plugin-gallery {
+    .item-content { width:40%; padding:10px 20px; text-align:left; }
+}
+
+// end of tablet
+}
+
+@media (min-width: $responsive-desktop) {
+//######################################################################################################################
+// #DESKTOP#
+
+// end of desktop
+}

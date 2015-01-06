@@ -1,0 +1,13 @@
+{% load i18n thumbnail sekizai_tags %}
+
+{% if object.title %}<h2>{% firstof object.title object.folder.name %}</h2>{% endif %}
+<div class="plugin-filer">
+    <ul class="filer-files-list">
+        {% for file in folder_files %}
+        <li class="file"><a href="{{ file.file }}" target="_blank">{{ file.label }} <span class="filesize">({{ file.file.size|filesizeformat }})</span></a></li>
+        {% endfor %}
+        {% for file in folder_images %}
+        <li class="file"><a href="{{ file.file }}" target="_blank">{{ file.label }} <span class="filesize">({{ file.file.size|filesizeformat }})</span></a></li>
+        {% endfor %}
+    </ul>
+</div>

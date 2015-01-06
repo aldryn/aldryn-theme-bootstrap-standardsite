@@ -1,0 +1,57 @@
+// @media all {
+//######################################################################################################################
+// #MOBILE#
+
+.app-news {
+
+    // list
+    .news-items {
+        li { padding-left:120px; position:relative; }
+        .news-visual { position:absolute; left:0; top:0; width:100px; text-align:center; }
+    }
+
+}
+
+.plugin-news {
+
+    // categories plugin
+    .news-categories {
+        a { border:none; }
+        li { border-bottom:1px dotted $color-grey-light; }
+    }
+
+    // plugin latest entries
+    .news-latest-entries, .news-selected-entries {
+        h3 { font-size:120%; line-height:120%; }
+        .news-meta { display:none; }
+        .news-lead { overflow:hidden; text-overflow:ellipsis; max-height:80px; p { margin:0; } }
+        li { padding-left:0; position:relative; }
+    }
+
+    // archive plugin
+    .news-categories {}
+
+    // tags plugin
+    .news-tags {}
+
+}
+
+// ie fixes
+.ie8 .plugin-news .news-back { left:-40px; }
+
+// end of mobile
+// }
+
+@media (min-width: $responsive-tablet) {
+//######################################################################################################################
+// #TABLET#
+
+// end of tablet
+}
+
+@media (min-width: $responsive-desktop) {
+//######################################################################################################################
+// #DESKTOP#
+
+// end of desktop
+}

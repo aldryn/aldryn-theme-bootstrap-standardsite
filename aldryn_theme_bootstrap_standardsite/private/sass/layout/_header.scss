@@ -1,0 +1,126 @@
+// @media all {
+//######################################################################################################################
+// #MOBILE#
+
+//###########################################################
+// #HEADER#
+.header { position:relative; z-index:100; width:100%;
+    padding:31px 0 0; margin:0; background-color:white;
+    @include box-shadow(0 0 5px 0px rgba(black, 0.10));
+}
+
+.logo-main { margin:10px 0; width:200px; position:relative; z-index:101; background:white;
+    a { display:block; padding:0; margin:0; width:200px; height:60px;
+        background:url('../img/logo-main.png') no-repeat left top;
+        @include hide-text(); }
+}
+
+//###########################################################
+// #TOOLBAR#
+.toolbar { position:absolute; left:0; top:0; z-index:101;
+    color:$toolbar-color; text-align:right;
+    width:100%; height:31px; background:$toolbar-background;
+}
+
+.metanav, .langnav { @include inline-block(); margin-left:5px;
+    ul { list-style-type:none; padding:0; margin:0; }
+    li { color:$toolbar-color; font-size:12px; line-height:31px; font-weight:200; text-transform:uppercase;
+        padding:0; margin-left:10px; @include inline-block(); }
+    a { color:$toolbar-link-color; }
+
+    .active a { color:white; font-weight:bold; }
+}
+.metanav { display:none; }
+
+// add some cms behaviour to the toolbar
+// .cms-toolbar-expanded .toolbar { top:35px; }
+
+//###########################################################
+// #SEARCH#
+.form-search { display:none; padding:0; margin:0 0 0 20px;
+    ul { @extend .list-reset; }
+    li { margin:0 !important; }
+    li, label, .field { @include inline-block(); }
+    fieldset { padding:0; margin:0; }
+    label { display:none; }
+
+    li .input-text { float:left; color:$toolbar-color; font-size:12px; line-height:19px; outline:none;
+        padding:2px 8px; margin:0; width:120px; border:none; background:$toolbar-input-background;
+        @include border-radius(0);
+        &:focus { color:black; background:white; }
+    }
+}
+
+// end of mobile
+// }
+
+@media (min-width: $responsive-tablet) {
+//######################################################################################################################
+// #TABLET#
+
+.metanav,
+.form-search { @include inline-block(); }
+
+// fixes the header on scroll
+.header-fixed { position:fixed; left:0; top:0; z-index:300; padding:0; border-bottom:2px solid $color-primary;
+    .logo-main { margin:0; }
+    .mainnav { top:7px; }
+    .mainnav > ul > li { padding-bottom:4px !important; }
+    // add nice transition
+    .logo-main, .mainnav, .mainnav > ul > li { @include single-transition(all, 200ms); }
+}
+
+//###########################################################
+// #MAINNAV#
+// the mobile navigation can be found within addons/_mobilemenu.scss
+.mainnav { position:absolute; right:0; top:17px; z-index:100;
+    h2 { display:none; }
+    ul { list-style-type:none; padding:0; margin:0; }
+    li { font-size:16px; line-height:20px; padding:0; }
+    a { display:block; color:$mainnav-color; text-decoration:none; }
+    a:hover { text-decoration:none; }
+
+    // only for the first level
+    > ul > li { position:relative; top:-1px; padding:14px 0; margin:0 0 0 25px;
+        border-bottom:2px solid transparent;
+        @include inline-block();
+
+        &.last { margin-right:0; }
+        &.active, &.ancestor { border-bottom-color:$color-primary; }
+
+        > a { padding:7px 10px; }
+        > a:hover, a:focus, a:active { color:$color-primary; }
+
+        &.children:hover {
+            ul { display:block; }
+            > a { color:white; background:$color-primary;
+                @include border-radius(2px 2px 0 0); }
+        }
+    }
+
+    // handle second level
+    ul li > ul { display:none; position:absolute; left:0; top:48px; z-index:200;
+        min-width:150px; background:$color-primary;
+        @include border-radius(0 2px 2px 2px);
+
+        a { color:white; font-size:14px; line-height:20px; padding:7px 25px 7px 15px; margin:0;
+            border-bottom:1px solid lighten($mainnav-active, 10%); @include text-shadow(0 1px 1px rgba(0,0,0,0.1));
+            &:hover, &:focus, &:active { background-color:$mainnav-active; @include border-radius(0 2px 2px 2px); }
+        }
+        li:last-child a { border:none; }
+        li.active a, li.ancestor a { background-color:$mainnav-active; }
+    }
+    ul li:last-child > ul {
+        left:auto; right:0;
+    }
+}
+
+// end of tablet
+}
+
+@media (min-width: $responsive-desktop) {
+//######################################################################################################################
+// #DESKTOP#
+
+// end of desktop
+}

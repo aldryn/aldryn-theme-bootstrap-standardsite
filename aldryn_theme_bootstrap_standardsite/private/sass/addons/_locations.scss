@@ -1,0 +1,53 @@
+// @media all {
+//######################################################################################################################
+// #MOBILE#
+
+// PLUGINS
+.google-map-container { @include box-shadow(0 3px 3px -3px $color-grey); }
+.google-map-route { margin:0 5px; font-size:0px; line-height:0;
+    .google-map-options { margin:0 10px; @include inline-block();
+        > span { cursor:pointer; @include inline-block(); padding:6px 8px; margin-left:-1px;
+            border:1px solid $color-grey-light; background-color:lighten($color-grey-light, 15%);
+            @include transition(all, 300ms);
+            &:hover { background-color:lighten($color-grey-light, 10%); }
+            &:first-child { @include border-radius(3px 0 0 3px); }
+            &:last-child { @include border-radius(0 3px 3px 0); }
+            span { @include inline-block(); width:15px; height:15px;
+                background:url('//maps.gstatic.com/tactile/directions/travel_mode/sprite-1x.png') no-repeat left top; }
+        }
+
+        span[data-type="driving"] span { background-position:-48px top; }
+        span[data-type="transit"] span { background-position:-96px top; }
+        span[data-type="walking"] span { background-position:-24px top; }
+        span[data-type="bicycling"] span { background-position:-72px top; }
+
+        .active { background-color:$color-grey-light !important; }
+    }
+
+    // error handling
+    .form-error input { border:1px solid $color-error; background-color:tint($color-error, 98%); }
+}
+.google-map-panel { margin:10px 5px;
+    .adp-warnbox { display:none; }
+    .adp-text { padding-left:20px; }
+    .adp-substep { padding-left:8px; }
+    .adp-placemark .adp-text { width:90%; }
+    .adp-placemark td:first-child { text-align:center; }
+}
+
+// end of mobile
+// }
+
+@media (min-width: $responsive-tablet) {
+//######################################################################################################################
+// #TABLET#
+
+// end of tablet
+}
+
+@media (min-width: $responsive-desktop) {
+//######################################################################################################################
+// #DESKTOP#
+
+// end of desktop
+}

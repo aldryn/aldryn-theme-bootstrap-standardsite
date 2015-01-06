@@ -1,0 +1,18 @@
+{
+	"theme": "aldryn-boilerplate-standard",
+	"name": "Theme Standardsite (Bootstrap)",
+	"description": "Bootstrap based theme for the standardsite",
+	"version": "0.0.1",
+	"url": "https://github.com/aldryn/aldryn-theme-bootstrap-standardsite",
+	"package-name": "aldryn-theme-bootstrap-standardsite",
+	"installed-apps": [
+		"aldryn_theme_bootstrap_standardsite"
+	],
+	"author": {
+		"name": "Divio AG",
+		"url": "https://www.divio.ch"
+	},
+    "license": {
+        "name": "BSD"
+    }
+}

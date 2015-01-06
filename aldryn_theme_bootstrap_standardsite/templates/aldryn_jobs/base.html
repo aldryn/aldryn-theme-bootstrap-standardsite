@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+{% load cms_tags %}
+
+{% block content %}
+<div class="row">
+    <div class="medium-17 column">
+        <div class="app app-jobs">
+            {% block content_jobs %}{% endblock %}
+        </div>
+    </div>
+    <div class="medium-7 column">
+        {% with 260 as width %}{% static_placeholder "sidebar_jobs" %}{% endwith %}
+    </div>
+</div>
+{% endblock content %}

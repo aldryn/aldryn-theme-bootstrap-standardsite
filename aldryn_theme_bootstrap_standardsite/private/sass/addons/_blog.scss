@@ -1,0 +1,61 @@
+// @media all {
+//######################################################################################################################
+// #MOBILE#
+
+// APPLICATION
+.app-blog {
+
+    // list
+    .blog-list .blog-visual { float:left; margin:19px 10px 2px 0; }
+
+}
+
+// PLUGINS
+.plugin-blog {
+
+    // plugin archive
+    .blog-archive {
+        a { display:block; padding:$line-space 0; border-bottom:1px dotted lighten($color-grey-light, 10%); }
+        a span { color:$color-grey-light; }
+        // month
+        ul { padding:$line-space 0; margin:0; }
+        ul li { display:inline; border:none; }
+        ul a { display:inline; padding-right:5px; border:none; }
+    }
+
+    // plugin latest entries
+    .blog-latest-entries {
+        h3 { font-size:120%; line-height:120%; }
+        .blog-meta { display:none; }
+        .blog-lead { overflow:hidden; text-overflow:ellipsis; max-height:80px; p { margin:0; } }
+    }
+
+    // plugin authors
+    .blog-authors {
+        li { border:none; }
+        li:last-child a { padding-bottom:0; }
+        a { @include inline-block(); padding-bottom:5px; }
+        a span { display:block; font-size:80%; color:$color-grey; }
+    }
+
+    // plugin tags
+    .blog-tags {}
+
+}
+
+// end of mobile
+// }
+
+@media (min-width: $responsive-tablet) {
+//######################################################################################################################
+// #TABLET#
+
+// end of tablet
+}
+
+@media (min-width: $responsive-desktop) {
+//######################################################################################################################
+// #DESKTOP#
+
+// end of desktop
+}

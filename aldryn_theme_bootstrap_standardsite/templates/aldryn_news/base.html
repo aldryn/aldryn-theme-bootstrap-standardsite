@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+{% load cms_tags %}
+
+{% block content %}
+<div class="row">
+    <div class="medium-17 column">
+        <div class="app app-news">
+            {% block content_news %}{% endblock %}
+        </div>
+    </div>
+    <div class="medium-7 column">
+        {% include "aldryn_news/plugins/categories.html" %}
+        {% with 260 as width %}{% static_placeholder "sidebar_news" %}{% endwith %}
+    </div>
+</div>
+{% endblock content %}

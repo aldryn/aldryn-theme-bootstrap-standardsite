@@ -1,0 +1,58 @@
+// @media all {
+//######################################################################################################################
+// #MOBILE#
+
+// APPLICATION
+.app-jobs {
+
+    // general styles
+    .jobs-items, .jobs-latest-entries {
+        .jobs-title { font-size:130%; line-height:130%; }
+        .jobs-category a { float:right; color:$color-grey-light; text-decoration:none; padding:2px 5px; margin:8px 0;
+            background:$color-grey-dark; @include inline-block(); @include border-radius(2px); clear:both;
+            @include transition(all, 300ms); }
+        .jobs-category a:hover { color:$color-grey; background:$color-grey-light; }
+    }
+
+    // registration
+    .jobs-application {
+        margin-top:$line-space * 2; border-top:1px solid $color-border;
+
+        .form-jobs fieldset {
+            li { float:left; width:50%; }
+            li:nth-child(5) { width:100%; textarea { width:80%; } }
+        }
+    }
+}
+
+// PLUGINS
+.plugin-jobs {
+
+    // plugin latest jobs
+    .jobs-latest-entries {
+        list-style-type:none; padding-left:0; margin-left:0; margin-bottom:$line-space * 3;
+        > li, [class*="-empty"] { display:block; position:relative; margin-bottom:-1px; @include clearfix();
+            border:1px dotted $color-grey-light; border-left:none; border-right:none; }
+
+        p { @extend .icon; @extend .icon-arrow-right; }
+        p:before { padding-right:$icon-space; }
+    }
+
+}
+
+// end of mobile
+// }
+
+@media (min-width: $responsive-tablet) {
+//######################################################################################################################
+// #TABLET#
+
+// end of tablet
+}
+
+@media (min-width: $responsive-desktop) {
+//######################################################################################################################
+// #DESKTOP#
+
+// end of desktop
+}

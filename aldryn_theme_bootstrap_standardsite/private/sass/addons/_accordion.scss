@@ -1,0 +1,38 @@
+// @media all {
+//######################################################################################################################
+// #MOBILE#
+
+.plugin-accordion {
+
+    .accordion-trigger { cursor:pointer; font-size:16px; line-height:20px; font-weight:200;
+        padding:8px 0; border-bottom:1px solid $color-border;
+        .text { float:right; width:16px; height:17px; overflow:hidden;
+            @extend .icon; @extend .icon-arrow-bottom; }
+
+        &.expanded .text { @extend .icon-arrow-top; }
+    }
+    // try to avoid padding, margin or border on this element to prevent weird jumping behaviours
+    .accordion-container {
+        h2 { font-size:24px; line-height:28px; margin-top:10px; }
+    }
+    // padding, margin or bottom should be applied here
+    .accordion-item { border-bottom:1px solid $color-border; }
+
+}
+
+// end of mobile
+// }
+
+@media (min-width: $responsive-tablet) {
+//######################################################################################################################
+// #TABLET#
+
+// end of tablet
+}
+
+@media (min-width: $responsive-desktop) {
+//######################################################################################################################
+// #DESKTOP#
+
+// end of desktop
+}

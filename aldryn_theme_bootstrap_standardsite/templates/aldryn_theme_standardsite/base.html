@@ -1,0 +1,135 @@
+{% extends "base_root.html" %}
+{% load i18n static cms_tags menu_tags sekizai_tags %}
+{% load url from future %}
+
+{% block body_class %}tpl-base{% endblock %}
+
+{% block extend_root %}
+{% block header %}
+<div class="mainnav-knob"></div>
+<div class="header-space" hidden="hidden"></div>
+<!-- start: header -->
+<header class="header" role="banner">
+    <div class="row">
+        {% comment %}the logo should be placed first for seo reasons{% endcomment %}
+        <div class="large-24 column relative">
+            <h1 class="logo-main">
+                <a href="/"><img src="{% static "img/logo-main.png" %}" alt="{{ site_settings.site.name }}" /></a>
+            </h1>
+
+            <!-- start: wai -->
+            <hr class="visuallyhidden" />
+            <h2 class="visuallyhidden">{% trans "Shortcuts:" %}</h2>
+            <ul class="skip-links">
+                <li><a href="/" title="[Alt + 0]" accesskey="0">{% trans "Go to home" %}</a></li>
+                <li><a href="#navigation" title="[Alt + 1]" accesskey="1">{% trans "Jump to navigation" %}</a></li>
+                <li><a href="#content" title="[Alt + 2]" accesskey="2">{% trans "Jump to content" %}</a></li>
+                <li><a href="#footer" title="[Alt + 3]" accesskey="3">{% trans "Contact" %}</a></li>
+            </ul>
+            <hr class="visuallyhidden" />
+            <!-- end: wai -->
+
+            {% block mainnav %}
+            <h2 class="visuallyhidden" id="navigation">{% trans "Navigation:" %}</h2>
+            {% render_model_block request.current_page "changelist" %}
+                {% with class="mainnav" title=_("Navigation") %}{% show_menu 0 1 100 100 "includes/menu/navigation.html" %}{% endwith %}
+            {% endrender_model_block %}
+            {% endblock mainnav %}
+        </div>
+    </div>
+</header>
+<!-- end: header -->
+{% endblock header %}
+
+{# the toolbar should be injected after the logo and menu delcatartions, we use absolute positioning to achieve this #}
+{% block toolbar %}
+<div class="toolbar">
+    <div class="row">
+        <div class="large-24 column">
+            {% block metanav %}
+            {% render_model_block request.current_page "changelist" %}
+                {% with class="metanav" %}{% show_menu_below_id "meta" 0 0 100 100 "includes/menu/navigation.html" %}{% endwith %}
+            {% endrender_model_block %}
+            {% endblock metanav %}
+
+            {% block langnav %}
+            <nav class="langnav">
+                <ul>{% language_chooser "includes/menu/langnav.html" %}</ul>
+            </nav>
+            {% endblock langnav %}
+
+            {% block quicksearch %}
+            <form action="/search/" method="post" class="form form-search">
+                <fieldset>
+                    {% csrf_token %}
+                    <ol>
+                        <li>
+                            <label>{% trans "Search" %}</label>
+                            <div class="field"><input type="search" class="input-text" placeholder="{% trans 'Search...' %}" /></div>
+                        </li>
+                    </ol>
+                </fieldset>
+            </form>
+            {% endblock %}
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block breadcrumb %}
+{% if not request.current_page.is_home %}
+<!-- start: breadcrumb -->
+<nav class="breadcrumb" role="navigation">
+    <div class="row">
+        <ol class="large-24 column">
+            <li class="title">{% trans "You are here: " %}</li>
+            {% block extend_breadcrumb %}
+            {% show_breadcrumb 0 "includes/menu/breadcrumb.html" %}
+            {% endblock extend_breadcrumb %}
+        </ol>
+    </div>
+</nav>
+<!-- end: breadcrumb -->
+{% endif %}
+{% endblock breadcrumb %}
+
+<!-- start: content -->
+<hr class="visuallyhidden" />
+<h1 class="visuallyhidden" id="content">{% trans "Content:" %} {% page_attribute title %}</h1>
+<div class="content">
+{% block messages %}{% include "includes/messages.html" %}{% endblock messages %}
+{% block feature %}{% placeholder "feature" %}{% endblock feature %}
+{% block extend_base %}
+    {% block content %}{% endblock %}
+{% endblock extend_base %}
+</div>
+<!-- end: content -->
+
+{% block footer %}
+<!-- start: footer -->
+<hr class="visuallyhidden" />
+<h2 class="visuallyhidden" id="footer">{% trans "Footer:" %}</h2>
+<footer class="footer" role="contentinfo">
+    <div class="row">
+        <div class="large-24 column">
+            {% block footnav %}
+            {% render_model_block request.current_page "changelist" %}
+                {% with class="footnav" %}{% show_menu_below_id "footer" 0 0 100 100 "includes/menu/navigation.html" %}{% endwith %}
+            {% endrender_model_block %}
+            {% endblock footnav %}
+            <div class="copyright">{% static_placeholder "footer" %}</div>
+        </div>
+    </div>
+</footer>
+<!-- end: footer -->
+{% endblock footer %}
+
+{% addtoblock "js" %}<script src="{% static 'js/addons/cl.uniform.min.js' %}"></script>{% endaddtoblock %}
+{% addtoblock "js" %}
+<script>
+jQuery('document').ready(function () {
+    new Cl.Uniform('input[type="radio"], input[type="checkbox"], input[type="file"], select');
+});
+</script>
+{% endaddtoblock %}
+{% endblock extend_root %}
