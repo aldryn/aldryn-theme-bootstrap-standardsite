@@ -43,17 +43,6 @@
                 </ul>
                 {% endwith %}
                 {% endrender_model_block %}
-
-                <form action="." method="post" class="navbar-form navbar-right">
-                    <div class="navbar-form-toggle"><span class="icon icon-fw icon-search"></span></div>
-                    <div class="navbar-form-container" hidden="hidden">
-                        <div class="form-group">
-                            <label for="field-quicksearch" class="sr-only">{% trans "Quicksearch" %}</label>
-                            <input type="search" class="form-control" id="field-quicksearch" placeholder="{% trans "Search" %}">
-                        </div>
-                        <button type="submit" class="btn btn-default">{% trans "Submit" %}</button>
-                    </div>
-                </form>
             </nav>
             {% endblock navbar %}
         </div>
