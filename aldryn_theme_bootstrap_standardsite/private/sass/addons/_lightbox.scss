@@ -1,20 +1,70 @@
-// @media all {
 //######################################################################################################################
-// #MOBILE#
+// #LIGHTBOX#
 
-// end of mobile
-// }
+// VARIABLES
+//##########################################################
+$lightbox-font-size: 14px;
+$lightbox-line-height: 18px;
+$lightbox-padding: 15px 10px 0;
+$lightbox-alpha: 0.6;
+$lightbox-bg: white;
+$lightbox-dim: black;
 
-@media (min-width: $responsive-tablet) {
-//######################################################################################################################
-// #TABLET#
+// REQUIRED
+//##########################################################
+.cl-lightbox { position: absolute; z-index: 99999; }
+.cl-lightbox-bay { position: absolute; z-index: 1; left: -9999em; top: -99999em; width: 9999em; height: 9999em; }
+.cl-lightbox-inner { position: relative; z-index: 100; }
+.cl-lightbox-loader { position: absolute; z-index: 102; left: 0; top: 0; width: 100%; height: 100%; background: no-repeat center center; }
+.cl-lightbox-content { position: relative; z-index: 101; overflow: hidden; }
+.cl-lightbox-content img { max-width: 100%; }
+.cl-lightbox-content iframe { width: 100%; height: 100%; }
+.cl-lightbox-description { display: none; }
+.cl-lightbox-navigation a { display: none; }
+.cl-lightbox-controls { overflow: hidden; }
+.cl-lightbox-dim { display: none; position: absolute; z-index: 99990; left: 0; top: 0; width: 100%; height: 100%;
+    opacity: inherit; filter: inherit; }
 
-// end of tablet
+// CUSTOM
+//##########################################################
+.cl-lightbox-inner { background: $lightbox-bg; @include border-radius(3px); }
+.cl-lightbox-loader { background-image: url('../img/loading.gif'); }
+.cl-lightbox-content { padding: $lightbox-padding; font-size: $lightbox-font-size; margin-bottom: 30px; }
+.cl-lightbox-error { text-align: center; width: 350px;
+    p { padding: 15px 0; }
 }
+.cl-lightbox-dim { background: $lightbox-dim; }
 
-@media (min-width: $responsive-desktop) {
-//######################################################################################################################
-// #DESKTOP#
+// description
+.cl-lightbox-description { font-size: $lightbox-font-size; line-height: $lightbox-line-height;
+    padding: 5px 10px; border-bottom: 1px solid lighten($lightbox-bg, 80%); }
 
-// end of desktop
+// controls
+.cl-lightbox-controls { font-size: $lightbox-font-size; line-height: $lightbox-line-height;
+    p { padding: 0; margin: 0; }
+
+    // close button
+    .cl-lightbox-close { position: absolute; right: -12px; top: -12px; z-index: 105;
+        -webkit-transform: translate3d(0, 0, 0); // this fixes an issue where z-index is not respected on android versions
+
+        a { float: right; width: 25px; height: 25px; overflow: hidden;
+            @extend .icon; @extend .icon-times; background: white; @include border-radius(100%); }
+        a:before { color: black; font-size: 25px !important; top: -1px !important; }
+        a:hover:before { color: $brand-primary !important; }
+    }
+
+    // navigation elements
+    .cl-lightbox-navigation { display: none !important; }
+    .cl-lightbox-text { position: absolute; left: 0; bottom: 0; z-index: 100;
+        width: 100%; height: 20px; padding: 2px 0 8px; clear: both; overflow: hidden;
+        text-align: center; background: $lightbox-bg; @include border-radius(0 0 3px 3px);
+
+        span { color: $gray; }
+        a { position: absolute; top: 1px; line-height: 17px; height: 19px; @extend .icon; }
+
+        .cl-lightbox-previous { left: 10px; @extend .icon-arrow-left; }
+        .cl-lightbox-previous:before { padding-right: 4px; top: 3px !important; }
+        .cl-lightbox-next { right: 28px; @extend .icon-arrow-right; }
+        .cl-lightbox-next:before { color: $text-color; right: -100%; padding-left: 4px; width: 0; left: auto; top: 3px !important; }
+    }
 }

@@ -1,0 +1,31 @@
+//######################################################################################################################
+// #UTILITIES#
+
+// TODO: table addon still in development
+
+//###########################################################
+// #TABLES#
+// INFO: this adds an additional layer with pointing arrows to tables
+.table-responsive-scroll:before { @extend .icon; @extend .icon-hand-o-up; }
+
+@media (max-width: $screen-sm-min) {
+    .table-responsive-scroll {
+        position: relative;
+        &:before {
+            position: absolute; left: 50%; top: 50%;
+            font-size: 30px;
+            margin-top: -15px; margin-left: -15px;
+            @include animation(table-scroll 2s infinite linear);
+            @include transition(all, $speed, linear);
+        }
+        &:hover:before { display: none; }
+    }
+}
+@include keyframes(table-scroll) {
+    0% { left: 60%; }
+    5%, 15% { left: 60%; transform: scale(0.8); }
+    50% { left: 40%; opacity: 0; }
+    100% { left: 60%; opacity: 0; }
+}
+
+// end of mobile

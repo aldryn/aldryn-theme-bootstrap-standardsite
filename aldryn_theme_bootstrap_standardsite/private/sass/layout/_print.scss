@@ -2,22 +2,17 @@
 //######################################################################################################################
 // #PRINT#
 
-// some elements that should be hidden by default
-.toolbar, .mainnav, .subnav, .footer { display:none; }
+// this file is intended for all print styles and rules
+// to ensure your website also works when printed
 
-// set the correct logo
-.logo-main a { text-indent:0; }
+// #DEFAULTS#
+a[href]:after { content: ""; }
+#cms_toolbar, .browser-outdated { display: none !important; }
 
-// overwrite header css
-.header { padding:0; }
-.header-foxed { position:relative; }
-.header-space { display:none !important; }
-
-// hide addons
-.plugin-gallery { display:none; }
-
-// cms
-#cms_toolbar { display:none; }
+// #CUSTOM#
+.navbar-head { display: block; }
+.navbar-main { display: none; }
+.navbar-head .navbar-brand a { text-indent: 0; }
 
 // end of print
 }

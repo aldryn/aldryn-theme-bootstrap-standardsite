@@ -1,39 +1,19 @@
-// @media all {
 //######################################################################################################################
-// #MOBILE#
+// #FOOTER#
 
-.footer { color:$color-grey; font-size:12px; line-height:lh(12px);
-    padding:25px 0; background-color:$footer-background;
+// all styles related to the global footer should be declared within this file
+// apply the "sites/" nesting described within the documentation if the file is getting to large
 
-    a { color:black; }
-    a:focus, a:active, a:focus { text-decoration:underline; }
+$footer-height: 90px;
 
-    .copyright { float:left; margin:0; min-width:300px; }
-    .copyright p { margin:0; }
+// INFO: sticky footer concept
+html { position: relative; min-height: 100%; }
+body { margin-bottom: $footer-height; }
 
-    .footnav { float:right; font-size:12px; line-height:12px;
-        ul { list-style-type:none; padding:2px 0 0; margin:0; }
-        li { @include inline-block(); padding:0 0 0 10px; margin:0 0 0 10px; border-left:1px solid $color-grey; }
-        li:first-child { border:none; padding-left:0; margin-left:0; position:relative; margin-top:-6px;
-            a { @extend .icon; @extend .icon-arrow-top; }
-            a:before { padding-right:$icon-space; top:3px; }
-        }
-    }
-}
+.footer {
+    position: absolute; bottom: 0; width: 100%;
+    color: $navbar-inverse-color;
+    height: $footer-height; padding: $line-height-computed 0; background-color: $navbar-inverse-bg;
 
-// end of mobile
-// }
-
-@media (min-width: $responsive-tablet) {
-//######################################################################################################################
-// #TABLET#
-
-// end of tablet
-}
-
-@media (min-width: $responsive-desktop) {
-//######################################################################################################################
-// #DESKTOP#
-
-// end of desktop
+    .copyright p { font-size: 90%; margin-bottom: 0; }
 }

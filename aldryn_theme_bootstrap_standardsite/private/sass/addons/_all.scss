@@ -1,23 +1,30 @@
 //######################################################################################################################
 // #AUTOIMPORTS#
 
-// this folder is for reusable plugins / apps from a cms or alike
-// update this file accordingly to include new plugins globally
+// this folder is for reusable addons / apps from a cms or alike
+// update this file accordingly to include new addons globally
 
 // importing applications
-@import "core";
-@import "shop";
-@import "blog";
+// @import "shop";
+
+// importing generic addons
+@import "browser";
+@import "utilities";
+@import "select2";
+
+// impoting additional addons
+@import "common"; // INFO: shared styles between all apps
+@import "carousel";
+@import "gallery";
+@import "lightbox";
+@import "locations";
+@import "uniform";
+
+// importing applications
+@import "accounts";
 @import "events";
-@import "news";
 @import "faq";
 @import "jobs";
+@import "news";
 @import "people";
-
-// importing addons
-@import "gallery";
-@import "locations";
-@import "carousel";
-@import "mobilemenu";
-@import "accordion";
-@import "uniform";
+@import "shop";

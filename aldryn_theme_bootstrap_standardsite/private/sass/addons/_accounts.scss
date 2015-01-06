@@ -1,0 +1,14 @@
+//######################################################################################################################
+// #ACCOUNTS#
+
+// TODO: not yet finished
+
+.app-accounts {
+    // column layouts
+    .accounts-left {
+        @include make-md-column(12);
+    }
+    .accounts-right {
+        @include make-md-column(12);
+    }
+}

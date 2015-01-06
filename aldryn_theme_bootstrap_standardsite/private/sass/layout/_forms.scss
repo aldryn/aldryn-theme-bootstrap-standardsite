@@ -1,25 +1,61 @@
-// @media all {
 //######################################################################################################################
-// #MOBILE#
+// #FORMS#
 
-input:hover, select:hover, textarea:hover { @include box-shadow(0 0 3px #e5e5e5); @include transition(border, 200ms); }
+// all styles related to the global forms should be declared within this file
+// apply the "sites/" nesting described within the documentation if the file is getting to large
 
-// #CONTACT#
-.form-contact legend { @extend h2; }
+//##################################################
+// #HELPERS#
 
-// end of mobile
-// }
+// these helpers are additionally added to extend bootstrap's defaults
+// btn-outline is very handy and generally adds a border and transparency to a button
 
-@media (min-width: $responsive-tablet) {
-//######################################################################################################################
-// #TABLET#
+// #HELPERS/animation#
+.btn { @include transition(background, $speed); }
 
-// end of tablet
+// #HELPERS/outline#
+.btn-outline { border: 1px solid transparent; background: transparent;
+    &.btn-default { @include button-variant($btn-default-color, transparent, $btn-default-border);
+        &:hover, &:active, &:focus { color: white; background-color: $btn-default-border; }
+    }
+    &.btn-primary { @include button-variant($btn-primary-bg, transparent, $btn-primary-border);
+        &:hover, &:active, &:focus { color: white; background-color: $btn-primary-border; }
+    }
+    &.btn-success { @include button-variant($btn-success-bg, transparent, $btn-success-border);
+        &:hover, &:active, &:focus { color: white; background-color: $btn-success-border; }
+    }
+    &.btn-info { @include button-variant($btn-info-bg, transparent, $btn-info-border);
+        &:hover, &:active, &:focus { color: white; background-color: $btn-info-border; }
+    }
+    &.btn-warning { @include button-variant($btn-warning-bg, transparent, $btn-warning-border);
+        &:hover, &:active, &:focus { color: white; background-color: $btn-warning-border; }
+    }
+    &.btn-danger { @include button-variant($btn-danger-bg, transparent, $btn-danger-border);
+        &:hover, &:active, &:focus { color: white; background-color: $btn-danger-border; }
+    }
 }
 
-@media (min-width: $responsive-desktop) {
-//######################################################################################################################
-// #DESKTOP#
+// #HELPERS/fieldset#
+// DOCS: http://getbootstrap.com/css/#tables-responsive
+@-moz-document url-prefix() {
+    fieldset { display: table-cell; }
+}
 
-// end of desktop
+//##################################################
+// #CUSTOM#
+
+// #ALDRYN-FORMS#
+.form-group {
+    ul {
+        @extend .list-inline;
+        padding: 0; margin: 0;
+    }
+    ul > li { padding-left: 0; padding-right: $padding-base-horizontal; }
+    ul label, ul input,
+    .control-field input[type="checkbox"] {
+        display: inline;
+        position: relative; top: -1px;
+        width: auto; height: auto;
+        padding: 0; margin: 0;
+    }
 }
