@@ -1,88 +1,74 @@
 {% extends "base_root.html" %}
-{% load i18n static cms_tags menu_tags sekizai_tags %}
+{% load i18n static cms_tags menu_tags %}
 {% load url from future %}
 
 {% block body_class %}tpl-base{% endblock %}
 
 {% block extend_root %}
 {% block header %}
-<div class="mainnav-knob"></div>
-<div class="header-space" hidden="hidden"></div>
-<!-- start: header -->
-<header class="header" role="banner">
-    <div class="row">
-        {% comment %}the logo should be placed first for seo reasons{% endcomment %}
-        <div class="large-24 column relative">
-            <h1 class="logo-main">
-                <a href="/"><img src="{% static "img/logo-main.png" %}" alt="{{ site_settings.site.name }}" /></a>
+{# INFO: navbar concept: http://getbootstrap.com/components/#navbar #}
+<header class="navbar navbar-inverse navbar-head">
+    <div class="container">
+        {# INFO: the logo should be placed first for seo reasons #}
+        <div class="navbar-header">
+            {# INFO: the logo should be placed first for seo reasons #}
+            <h1 class="navbar-brand">
+                <a href="/"><img src="{% static "img/logo-main@print.png" %}" alt="{{ site_settings.site.name }}" /></a>
             </h1>
+            <div class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                {% for row in 123|make_list %}<span class="icon-bar"></span>{% endfor %}
+            </div>
+        </div>
 
-            <!-- start: wai -->
-            <hr class="visuallyhidden" />
-            <h2 class="visuallyhidden">{% trans "Shortcuts:" %}</h2>
-            <ul class="skip-links">
-                <li><a href="/" title="[Alt + 0]" accesskey="0">{% trans "Go to home" %}</a></li>
-                <li><a href="#navigation" title="[Alt + 1]" accesskey="1">{% trans "Jump to navigation" %}</a></li>
-                <li><a href="#content" title="[Alt + 2]" accesskey="2">{% trans "Jump to content" %}</a></li>
-                <li><a href="#footer" title="[Alt + 3]" accesskey="3">{% trans "Contact" %}</a></li>
-            </ul>
-            <hr class="visuallyhidden" />
-            <!-- end: wai -->
+        {# INFO: ensure the anchor names are callable #}
+        <h2 class="sr-only">{% trans "Shortcuts" %}</h2>
+        <ul class="skip-links">
+            <li><a href="/" title="[Alt + 0]" accesskey="0">{% trans "Go to home" %}</a></li>
+            <li><a href="#navigation" title="[Alt + 1]" accesskey="1">{% trans "Jump to navigation" %}</a></li>
+            <li><a href="#content" title="[Alt + 2]" accesskey="2">{% trans "Jump to content" %}</a></li>
+            <li><a href="#footer" title="[Alt + 3]" accesskey="3">{% trans "Contact" %}</a></li>
+        </ul>
 
-            {% block mainnav %}
-            <h2 class="visuallyhidden" id="navigation">{% trans "Navigation:" %}</h2>
-            {% render_model_block request.current_page "changelist" %}
-                {% with class="mainnav" title=_("Navigation") %}{% show_menu 0 1 100 100 "includes/menu/navigation.html" %}{% endwith %}
-            {% endrender_model_block %}
-            {% endblock mainnav %}
+        <div class="navbar-collapse collapse">
+            {% block navbar %}
+            <nav class="nav navbar-main navbar-right" id="navigation" role="navigation">
+                <h2 class="sr-only">{% trans "Navigation" %}</h2>
+                {% render_model_block request.current_page "changelist" %}
+                {% with dropdown="true" %}
+                <ul class="nav navbar-nav">
+                    {% show_menu 0 1 100 100 "includes/menu/navigation.html" %}
+                    <li class="divider" role="presentation"><span class="sr-only">{% trans "Separator" %}</span></li>
+                    {% show_menu_below_id "meta" 0 0 100 100 "includes/menu/navigation.html" %}
+                    {% language_chooser "includes/menu/langnav.html" "native" %}
+                </ul>
+                {% endwith %}
+                {% endrender_model_block %}
+
+                <form action="." method="post" class="navbar-form navbar-right">
+                    <div class="navbar-form-toggle"><span class="icon icon-fw icon-search"></span></div>
+                    <div class="navbar-form-container" hidden="hidden">
+                        <div class="form-group">
+                            <label for="field-quicksearch" class="sr-only">{% trans "Quicksearch" %}</label>
+                            <input type="search" class="form-control" id="field-quicksearch" placeholder="{% trans "Search" %}">
+                        </div>
+                        <button type="submit" class="btn btn-default">{% trans "Submit" %}</button>
+                    </div>
+                </form>
+            </nav>
+            {% endblock navbar %}
         </div>
     </div>
 </header>
-<!-- end: header -->
 {% endblock header %}
-
-{# the toolbar should be injected after the logo and menu delcatartions, we use absolute positioning to achieve this #}
-{% block toolbar %}
-<div class="toolbar">
-    <div class="row">
-        <div class="large-24 column">
-            {% block metanav %}
-            {% render_model_block request.current_page "changelist" %}
-                {% with class="metanav" %}{% show_menu_below_id "meta" 0 0 100 100 "includes/menu/navigation.html" %}{% endwith %}
-            {% endrender_model_block %}
-            {% endblock metanav %}
-
-            {% block langnav %}
-            <nav class="langnav">
-                <ul>{% language_chooser "includes/menu/langnav.html" %}</ul>
-            </nav>
-            {% endblock langnav %}
-
-            {% block quicksearch %}
-            <form action="/search/" method="post" class="form form-search">
-                <fieldset>
-                    {% csrf_token %}
-                    <ol>
-                        <li>
-                            <label>{% trans "Search" %}</label>
-                            <div class="field"><input type="search" class="input-text" placeholder="{% trans 'Search...' %}" /></div>
-                        </li>
-                    </ol>
-                </fieldset>
-            </form>
-            {% endblock %}
-        </div>
-    </div>
-</div>
-{% endblock %}
 
 {% block breadcrumb %}
 {% if not request.current_page.is_home %}
 <!-- start: breadcrumb -->
-<nav class="breadcrumb" role="navigation">
-    <div class="row">
-        <ol class="large-24 column">
-            <li class="title">{% trans "You are here: " %}</li>
+{# INFO: breadcrumb concept: http://getbootstrap.com/components/#breadcrumbs #}
+<nav class="navbar navbar-breadcrumb" role="navigation">
+    <h3 class="sr-only">{% trans "You are here" %}</h3>
+    <div class="container">
+        <ol class="breadcrumb">
             {% block extend_breadcrumb %}
             {% show_breadcrumb 0 "includes/menu/breadcrumb.html" %}
             {% endblock extend_breadcrumb %}
@@ -94,42 +80,30 @@
 {% endblock breadcrumb %}
 
 <!-- start: content -->
-<hr class="visuallyhidden" />
-<h1 class="visuallyhidden" id="content">{% trans "Content:" %} {% page_attribute title %}</h1>
-<div class="content">
+<hr class="sr-only" />
+<h1 class="sr-only" id="content">{% trans "Content:" %} {% page_attribute title %}</h1>
 {% block messages %}{% include "includes/messages.html" %}{% endblock messages %}
 {% block feature %}{% placeholder "feature" %}{% endblock feature %}
 {% block extend_base %}
     {% block content %}{% endblock %}
 {% endblock extend_base %}
-</div>
+<hr class="sr-only" />
 <!-- end: content -->
 
 {% block footer %}
 <!-- start: footer -->
-<hr class="visuallyhidden" />
-<h2 class="visuallyhidden" id="footer">{% trans "Footer:" %}</h2>
 <footer class="footer" role="contentinfo">
-    <div class="row">
-        <div class="large-24 column">
-            {% block footnav %}
-            {% render_model_block request.current_page "changelist" %}
-                {% with class="footnav" %}{% show_menu_below_id "footer" 0 0 100 100 "includes/menu/navigation.html" %}{% endwith %}
-            {% endrender_model_block %}
-            {% endblock footnav %}
-            <div class="copyright">{% static_placeholder "footer" %}</div>
-        </div>
+    <h2 class="sr-only" id="footer">{% trans "Footer" %}</h2>
+    <div class="container">
+        {% render_model_block request.current_page "changelist" %}
+        <ul class="list-inline">
+            <li class="pull-right"><a href="#page-top" data-spy="scroll"><span class="icon icon-left icon-arrow-up"></span>{% trans "Back to top" %}</a></li>
+            {% show_menu_below_id "footer" 0 0 100 100 "includes/menu/navigation.html" %}
+        </ul>
+        {% endrender_model_block %}
+        <div class="copyright">{% static_placeholder "footer" %}</div>
     </div>
 </footer>
 <!-- end: footer -->
 {% endblock footer %}
-
-{% addtoblock "js" %}<script src="{% static 'js/addons/cl.uniform.min.js' %}"></script>{% endaddtoblock %}
-{% addtoblock "js" %}
-<script>
-jQuery('document').ready(function () {
-    new Cl.Uniform('input[type="radio"], input[type="checkbox"], input[type="file"], select');
-});
-</script>
-{% endaddtoblock %}
 {% endblock extend_root %}
