@@ -14,17 +14,11 @@
 
 // impoting additional addons
 @import "common"; // INFO: shared styles between all apps
-@import "carousel";
 @import "gallery";
-@import "lightbox";
 @import "locations";
-@import "uniform";
 
 // importing applications
-@import "accounts";
 @import "events";
 @import "faq";
 @import "jobs";
-@import "news";
 @import "people";
-@import "shop";
