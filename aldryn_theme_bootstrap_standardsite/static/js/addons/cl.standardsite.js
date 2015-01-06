@@ -1,5 +1,9 @@
 'use strict';
 //######################################################################################################################
+// #NAMESPACES#
+var Cl = window.Cl || {};
+
+//######################################################################################################################
 /* global Cl */
 Cl.Standardsite = {
 
@@ -15,9 +19,9 @@ Cl.Standardsite = {
         // handles fixed positioned menu
         $(window).on('scroll.mainnav', function () {
             // cancel if on mobile
-            if(Cl.Utils.mobile()) { return false; }
+            if (Cl.Utils.mobile()) { return false; }
 
-            if($(window).scrollTop() > toolbar.outerHeight(true)) {
+            if ($(window).scrollTop() > toolbar.outerHeight(true)) {
                 headerSpace.show();
                 header.addClass('header-fixed');
             } else {
@@ -32,6 +36,12 @@ Cl.Standardsite = {
             e.preventDefault();
             // TODO use here cl.scroll
             $('html, body').animate({ 'scrollTop': 0 }, 100);
+        });
+
+        // TODO: NOT FINAL
+        $('.navbar-form-toggle').on('click', function () {
+            $('.navbar-form-container').fadeToggle(200);
+            $(this).find('span').toggleClass('icon-times');
         });
     }
 

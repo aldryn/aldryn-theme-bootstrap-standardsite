@@ -7,42 +7,37 @@
 //######################################################################################################################
 // #NAMESPACES#
 var Cl = window.Cl || {};
-/* global requirejs */
+/* global outdatedBrowser */
 
 //######################################################################################################################
 // #BASE#
 jQuery(document).ready(function () {
 
-    // set the correct js path
-    requirejs.config({ 'baseUrl': Cl.static + 'js/' });
-
-    // load modules using require
-    require(['modules/cl.utils'], function() {
-        // removes noscript form body and adds print-js
+    // removes noscript form body and adds print-js
+    if (window.Cl && window.Cl.Utils) {
         Cl.Utils.document();
-        // handles input placeholder="" attributes
-        Cl.Utils.placeholders();
-        // handles the viewport scaling for mobile devices
-        Cl.Utils.viewport();
-        // load default jquery widgets from addons/jquery.functions.js
-        $('.popup').autoPopUp();
-        $('.mailcrypte').mailCrypte();
-    });
+        // INFO: additionally you will be able to use:
+        // Cl.Utils.mobile() for detecting mobile devices
+        // Cl.Utils.tablet() for detecting tablet devices
+    }
 
-    // load mobilemenu
-    require(['addons/cl.mobilemenu.min'], function () {
-        new Cl.Mobilemenu({
-            'bound': 739,
-            'offset': {
-                'top': -32
-            }
+    // DOCS: https://github.com/burocratik/outdated-browser
+    if (window.outdatedBrowser) {
+        outdatedBrowser({
+            'languagePath': '',
+            'lowerThan': 'boxShadow'
         });
-    });
+    }
 
-    // adds standardsite specific features
-    require(['modules/cl.standardsite'], function () {
-        // handles fixed navigation and "top" link
+    // load debugging
+    // DOCS: http://finalangel.github.io/classjs-plugins/examples/cl.debug/
+    if (window.Cl && window.Cl.Debug) {
+        new Cl.Debug();
+    }
+
+    // standardsite initialization
+    if (window.Cl && window.Cl.Standardsite) {
         Cl.Standardsite.navigation();
-    });
+    }
 
 });
